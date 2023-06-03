@@ -23,6 +23,7 @@ def student_details(request, std_id):
     for data_obj in student_details:
         data.append({
             'course': data_obj.course.course_name,
+            'total_attendance':40,
             'attendance': data_obj.attendance,
             'total_marks':20,
             'mid_marks': data_obj.marks,
