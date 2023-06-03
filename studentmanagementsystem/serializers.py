@@ -1,12 +1,15 @@
 from rest_framework import serializers
-from .models import Student, StudentDetails
-
+from .models import Student,StudentData
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ['username', 'password', 'department']
+        fields = ['std_id','username', 'password', 'department']
 
 class StudentDetailsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudentDetails
-        fields = ['courses', 'attendance', 'mid_marks']
+        model = StudentData
+        fields = ['course','attendance','marks']
+class GradesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudentData
+        fields = ['cgpa','gpa1','gpa2','gpa3','gpa4']
