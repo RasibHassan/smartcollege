@@ -21,6 +21,8 @@ class Courses(models.Model):
         return self.course_name 
 
 class StudentData(models.Model):
+    id = models.AutoField(primary_key=True)
+
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
     attendance = models.IntegerField()
@@ -30,6 +32,8 @@ class StudentData(models.Model):
         return f"{self.student.username} - {self.course.course_name}"
     
 class Grades(models.Model):
+    id = models.AutoField(primary_key=True)
+
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     cgpa = models.FloatField()
     gpa1 = models.FloatField()

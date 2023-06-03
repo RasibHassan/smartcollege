@@ -21,8 +21,10 @@ def student_details(request, std_id):
     print(student_details)
     data = []
     for data_obj in student_details:
+        percentage=(data_obj.attendance/40)*100
         data.append({
             'course': data_obj.course.course_name,
+            'attendance_percentage':percentage,
             'total_attendance':40,
             'attendance': data_obj.attendance,
             'total_marks':20,
@@ -38,14 +40,38 @@ def student_grades(request, std_id):
 
     # Retrieve the StudentDetails object associated with the Student
     student_grades = get_object_or_404(Grades,student=student)
-    data1=[{
-        'cgpa':student_grades.cgpa,
-        'gpa1':student_grades.gpa1,
+    data1=[
+    {
+        "grade": "GPA",
 
-        'gpa2':student_grades.gpa2,
+        "gpa1": student_grades.gpa1
 
-        'gpa3':student_grades.gpa3,
-        'gpa4':student_grades.gpa4,
-    }]
+    },
+    {
+        "grade": "GPA2",
+
+        "gpa2": student_grades.gpa2
+
+    },
+    {
+        "grade": "GPA3",
+
+        "gpa3": student_grades.gpa3
+
+    },  {
+        "grade": "GPA4",
+
+        "gpa4": student_grades.gpa4
+
+    },
+    {
+        "grade": "CGPA",
+
+        "cgpa": student_grades.cgpa
+
+    },
+    ]
+    
+
     return JsonResponse(data1, safe=False)
 
