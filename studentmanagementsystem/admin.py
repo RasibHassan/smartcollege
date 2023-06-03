@@ -11,4 +11,4 @@ class StudenetDataAdmin(admin.ModelAdmin):
     list_display = ('student','course','attendance','marks')
 @admin.register(Grades)
 class GradesDataAdmin(admin.ModelAdmin):
-    list_display = ('cgpa','gpa1','gpa2','gpa3','gpa4')
+    list_display = ('student','cgpa','gpa1','gpa2','gpa3','gpa4')
