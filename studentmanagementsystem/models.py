@@ -47,3 +47,26 @@ class Grades(models.Model):
 
     def __str__(self):
         return f"{self.student.username} - Grades "
+
+class Teacher(models.Model):
+    teacher_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=10)
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.username
+    
+class FEES(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    ammount=models.IntegerField()
+    status=models.CharField(max_length=10)
+    def __str__(self):
+        return self.student.username
+    
+class Examination(models.Model):
+    course=models.ForeignKey(Courses, on_delete=models.CASCADE)
+    date=models.DateField()
+    time=models.TimeField()
+    venue=models.CharField(max_length=10)
